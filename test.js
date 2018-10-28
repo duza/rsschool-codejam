@@ -1,6 +1,6 @@
 const assert = require('assert');
 Object.freeze(assert);
-const { sumOfOther } = require('./src/index.js');
+const { sumOfOther, make } = require('./src/index.js');
 
 describe('sumOfOther', () => {
   describe('simple test with simple array', () => {
@@ -20,3 +20,11 @@ describe('sumOfOther', () => {
     });
   });
 });
+
+describe('make', () => {
+  it('test sum function', () => {
+    const sum = (a, b) => a + b;
+    const result = make(15)(34, 21, 666)(41)(sum);
+    assert.strictEqual(result, 777);
+  })
+})
