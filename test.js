@@ -1,6 +1,6 @@
 const assert = require('assert');
 Object.freeze(assert);
-const { sumOfOther, make } = require('./src/index.js');
+const { sumOfOther, make, recursion } = require('./src/index.js');
 
 describe('sumOfOther', () => {
   describe('simple test with simple array', () => {
@@ -39,4 +39,36 @@ describe('make', () => {
     const result = make(1, 1, 1, 1, 1, 1)(-1)(3, 0)(multiply);
     assert.strictEqual(result, 0);
   });
-})
+});
+
+describe('recursion', () => {
+  it('test the tree from task', () => {
+    const tree = {"value":100,"left":{"value":90,"left":{"value":70},"right":{"value":99}},"right":{"value":120,"left":{"value":110},"right":{"value":130}}};
+    const array = recursion(tree);
+    assert.deepStrictEqual(array, [[100], [90, 120], [70,99,110,130]]);
+  });
+
+  it('test uneven tree', () => {
+    const tree = { value: 1, left: { value: 2 }, right: { value: 3, left: { value: 4 }, right: { value: 5, left: { value: 6 }, right: { value: 7, right: { value: 8 }}}}};
+    const array = recursion(tree);
+    assert.deepStrictEqual(array, [[1], [2, 3], [4, 5], [6, 7], [8]]);
+  });
+
+  it('test empty tree', () => {
+    const tree = {};
+    const array = recursion(tree);
+    assert.deepStrictEqual(array, []);
+  });
+
+  it('test a tree with only vertex', () => {
+    const tree = { value: 42 };
+    const array = recursion(tree);
+    assert.deepStrictEqual(array, [[42]]);
+  });
+
+  it('test simple little tree', () => {
+    const tree = { value: 'a', right: { value: 'c' }, left: { value: 'b' }};
+    const array = recursion(tree);
+    assert.deepStrictEqual(array, [['a'], ['b', 'c']]);
+  });
+});
