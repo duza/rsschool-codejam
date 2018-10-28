@@ -26,5 +26,17 @@ describe('make', () => {
     const sum = (a, b) => a + b;
     const result = make(15)(34, 21, 666)(41)(sum);
     assert.strictEqual(result, 777);
-  })
+  });
+
+  it('test diff function', () => {
+    const diff = (a, b) => a - b;
+    const result = make(1, 2, 3, 4)(5)(-7)(diff);
+    assert.strictEqual(result, -6);
+  });
+
+  it('test multiplication function', () => {
+    const multiply = (a, b) => a * b;
+    const result = make(1, 1, 1, 1, 1, 1)(-1)(3, 0)(multiply);
+    assert.strictEqual(result, 0);
+  });
 })
