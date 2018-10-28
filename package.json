@@ -3,12 +3,15 @@
   "version": "0.0.1",
   "description": "just codejam rsschool task",
   "main": "index.js",
-  "dependencies": {},
   "devDependencies": {
+    "eslint": "^5.8.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
     "mocha": "^5.2.0"
   },
   "scripts": {
-    "test": "mocha test.js"
+    "test": "mocha test.js",
+    "lint": "./node_modules/.bin/eslint --ignore-path .gitignore --ignore-pattern test.js ."
   },
   "repository": {
     "type": "git",
@@ -23,5 +26,11 @@
   "bugs": {
     "url": "https://github.com/duza/rsschool-codejam/issues"
   },
-  "homepage": "https://github.com/duza/rsschool-codejam#readme"
+  "homepage": "https://github.com/duza/rsschool-codejam#readme",
+  "dependencies": {
+    "eslint-plugin-mocha": "^5.2.0"
+  },
+  "env": [
+    "mocha"
+  ]
 }

@@ -10,7 +10,7 @@ module.exports = function recursion(tree) {
   if ({}.hasOwnProperty.call(tree, 'right')) {
     queue.push(tree.right);
   }
-  const flatten = children => {
+  const flatten = (children) => {
     const leafValues = [];
     const childLeaves = [];
     while (children.length) {
@@ -31,7 +31,7 @@ module.exports = function recursion(tree) {
     if (childLeaves.length) {
       flatten(childLeaves);
     }
-  }
+  };
   flatten(queue);
   return arr;
 };

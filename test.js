@@ -1,7 +1,8 @@
 const assert = require('assert');
-Object.freeze(assert);
 const { sumOfOther, make, recursion } = require('./src/index.js');
 
+
+Object.freeze(assert);
 describe('sumOfOther', () => {
   describe('simple test with simple array', () => {
     it('should return array', () => {
